@@ -1,8 +1,0 @@
-package lab2.Object;
-
-public class Main {
-	public static void main(String agr[]) {
-		Box box = Box.getInstant();
-		System.out.println("Hello \u001b[1;31mred\u001b[0m world!");
-	}
-}
