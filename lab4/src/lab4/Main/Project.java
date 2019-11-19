@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class Project extends ProjectPrinter{
+public class Project{
 	private String projectId;
 	private Date startDate,endDate;
 	private ArrayList<Employee> listofEmployee;
@@ -18,7 +18,6 @@ public class Project extends ProjectPrinter{
 			startDate = format.parse(_startDate);
 			endDate = format.parse(_endDate);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

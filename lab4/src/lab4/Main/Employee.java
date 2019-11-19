@@ -1,8 +1,7 @@
 package lab4.Main;
 
 
-public class Employee extends ProjectPrinter 
-					  implements Comparable<Employee>{
+public class Employee implements Comparable<Employee>{
 	private String employeeId,employeeName;
 	private int salaryPerHour, noOfLeavingDay, noOfTravelDay;
 	
@@ -27,7 +26,6 @@ public class Employee extends ProjectPrinter
 	
 	@Override
 	public int compareTo(Employee e) {
-		// TODO Auto-generated method stub
 		if(this.noOfTravelDay>e.noOfTravelDay)  return 1;
 		if(this.noOfTravelDay<e.noOfTravelDay) return -1;
 		if(this.noOfTravelDay==e.noOfTravelDay) {
