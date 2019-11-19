@@ -1,7 +1,10 @@
 package lab4.Main;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Project extends ProjectPrinter{
 	private String projectId;
@@ -10,15 +13,23 @@ public class Project extends ProjectPrinter{
 	
 	public Project(String _projectId, String _startDate, String _endDate, ArrayList<Employee> _listofEmployee) {
 		projectId = _projectId;
-		startDate = Date.valueOf(_startDate);
-		endDate = Date.valueOf(_endDate);
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			startDate = format.parse(_startDate);
+			endDate = format.parse(_endDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		listofEmployee = _listofEmployee;
 	}
 	
 	public int estimateBudget() {
 		int S=0;
 		for(Employee e: listofEmployee) {
-			S+=e.getSalaryPerHour()*8*(endDate.compareTo(startDate));
+			S+=e.getSalaryPerHour()*8*(
+					TimeUnit.DAYS.convert(endDate.getTime()-startDate.getTime(),TimeUnit.MILLISECONDS));
 		}
 		return S;
 	}
