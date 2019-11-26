@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -17,7 +18,7 @@ import lab5.products.Products;
 public class gui {
 	
 	private JButton addBt,removeBt;
-	private JTextPane productList,decription;
+	private JTextPane productList,decription,warning;
 	private JTextField productName,productAmount;
 	
 	public gui() {
@@ -47,9 +48,10 @@ public class gui {
 		addremove.add(l3);
 		
 		decription = new JTextPane();
+		JScrollPane decriptionScroll = new JScrollPane(decription);
 		int decriptionH = l3.getPreferredSize().height*3;
-		decription.setBounds(150,92,200,decriptionH);
-		addremove.add(decription);
+		decriptionScroll.setBounds(150,92,200,decriptionH);
+		addremove.add(decriptionScroll);
 		
 		//Buttons
 		addBt = new JButton("Add");
@@ -70,8 +72,14 @@ public class gui {
 		productList.setEditable(false);
 		JScrollPane scroll = new JScrollPane(productList);
 		scroll.setBounds(380,l4.getPreferredSize().height+20,180,150);
-//		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		addremove.add(scroll);
+		
+		warning = new JTextPane();
+			warning.setBackground(addremove.getBackground());
+		JScrollPane warningScroll = new JScrollPane(warning);
+			warningScroll.setBorder(BorderFactory.createEmptyBorder());
+		warningScroll.setBounds(380,200,180,80);
+		addremove.add(warningScroll);
 		
 		addClick();
 		update();
@@ -85,9 +93,13 @@ public class gui {
 		JLabel decription = new JLabel("Decription");
 		
 		JTextField productNameBox = new JTextField(100);
-		JLabel amountOut = new JLabel("a");
-		JLabel decriptionOut = new JLabel();
-		
+		JLabel amountOut = new JLabel();
+		JTextPane decriptionOut = new JTextPane(); 
+			decriptionOut.setBackground(searchPanel.getBackground()); 	
+			decriptionOut.setEditable(false); 
+			
+		JScrollPane decriptionScroll = new JScrollPane(decriptionOut);
+			decriptionScroll.setBorder(BorderFactory.createEmptyBorder());
 		JButton searchBt = new JButton("Search");
 		
 		productName.setBounds(50,300,productName.getPreferredSize().width,productName.getPreferredSize().height);
@@ -96,7 +108,8 @@ public class gui {
 		
 		productNameBox.setBounds(150,300,150,productName.getPreferredSize().height+2);
 		amountOut.setBounds(150,332,amount.getPreferredSize().width+2,amount.getPreferredSize().height);
-		decriptionOut.setBounds(150,370,decription.getPreferredSize().width+2,decription.getPreferredSize().height);
+		decriptionScroll.setBounds(150,370,200,
+				decription.getPreferredSize().height*100);
 		
 		searchBt.setBounds(350,productName.getBounds().y,productName.getBounds().width,productName.getBounds().height);
 		
@@ -105,7 +118,7 @@ public class gui {
 		searchPanel.add(decription);
 		searchPanel.add(productNameBox);
 		searchPanel.add(amountOut);
-		searchPanel.add(decriptionOut);
+		searchPanel.add(decriptionScroll);
 		searchPanel.add(searchBt);
 		
 		setButton(searchBt, productNameBox, amountOut, decriptionOut);
@@ -113,12 +126,11 @@ public class gui {
 		searchPanel.setLayout(null);
 	}
 	
-	public void setButton(JButton bt, JTextField productNameBox, JLabel amountOut, JLabel decriptionOut) {
+	public void setButton(JButton bt, JTextField productNameBox, JLabel amountOut, JTextPane decriptionOut) {
 		bt.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				for(int i=0;i<editor.productls.size();i++) {
 					if(productNameBox.getText().equals(editor.productls.get(i).getName())) {
 						amountOut.setText(Integer.toString(editor.productls.get(i).getAmount()));
@@ -144,19 +156,18 @@ public class gui {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean foundbug = false;
-//				decription.setText("");
+				warning.setText("");
 				if(productName.getText().isEmpty()) {
-//					decription.setText("Blank Product Name\n");
+					warning.setText("Blank Product Name\n");
 					foundbug = true;
 					}
 				if(productAmount.getText().isEmpty()) {
-//					decription.setText(decription.getText()+"Blank Product Amount");
+					warning.setText(warning.getText()+"Blank Product Amount");
 					foundbug = true;
 					}
 				if(!foundbug) {
-//						decription.setText("");
+						warning.setText("");
 						if(!find(1)) add();
 						update();
 					}
@@ -167,20 +178,19 @@ public class gui {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				boolean foundbug = false;
-//				decription.setText("");
+				warning.setText("");
 				if(productName.getText().isEmpty()) {
-//					decription.setText("Blank Product Name\n");
+					warning.setText("Blank Product Name\n");
 					foundbug = true;
 					}
 				if(productAmount.getText().isEmpty()) {
-//					decription.setText(decription.getText()+"Blank Product Amount");
+					warning.setText(warning.getText()+"Blank Product Amount");
 					foundbug = true;
 					}
 				if(!foundbug) {
-//								decription.setText("");
-								if(!find(-1)) decription.setText("The given product is not existed");
+						warning.setText("");
+								if(!find(-1)) warning.setText("The given product is not existed");
 								else update();
 							}
 			}
@@ -191,7 +201,7 @@ public class gui {
 		for(int i=0;i<editor.productls.size();i++) {
 			if(productName.getText().equals(editor.productls.get(i).getName())) {
 				if(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText())<0) {
-					//Print out not valid
+					warning.setText("Given amount is bigger than the storage amount");
 				}else
 				if(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText())>0) {
 					editor.productls.get(i).setAmount(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText()));
@@ -204,14 +214,10 @@ public class gui {
 	}
 	public void remove(int i) {
 		editor.productls.remove(i);
-//		editor.amount.remove(i);
-//		editor.decription.remove(i);
 	}
 	
 	public void add() {
 		editor.productls.add(new Products(productName.getText(),Integer.parseInt(productAmount.getText())));
-//		editor.amount.add(Integer.parseInt(productAmount.getText()));
-//		editor.decription.add(decription.getText());
 		editor.productls.get(editor.productls.size()-1).setDecription(decription.getText());
 	}
 

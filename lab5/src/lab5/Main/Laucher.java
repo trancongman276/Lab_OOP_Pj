@@ -12,9 +12,8 @@ public class Laucher {
 	public static void main(String arg[]) {
 		editor edit = new editor();
 		try {	
-			edit.Read("D:\\Java_workspace\\Lab\\lab5\\res\\input.txt");
+			edit.Read("res\\input.txt");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -26,13 +25,12 @@ public class Laucher {
 		GUI.addRemove(jframe.getContentPane());
 		GUI.Search(jframe.getContentPane());
 		
-//		jframe.setLayout(null);
 		Insets insets = jframe.getInsets();
 		jframe.setSize(600 + insets.left + insets.right,
 				600 + insets.top + insets.bottom);
 		jframe.setVisible(true);
 		jframe.setResizable(false);
 		
-		edit.closeAndWrite(jframe, "D:\\Java_workspace\\Lab\\lab5\\res\\input.txt", GUI);
+		edit.closeAndWrite(jframe, "res\\input.txt", GUI);
 	}
 }
