@@ -183,11 +183,7 @@ public class gui {
 				if(productName.getText().isEmpty()) {
 					warning.setText("Blank Product Name\n");
 					foundbug = true;
-					}
-				if(productAmount.getText().isEmpty()) {
-					warning.setText(warning.getText()+"Blank Product Amount");
-					foundbug = true;
-					}
+					}	
 				if(!foundbug) {
 						warning.setText("");
 								if(!find(-1)) warning.setText("The given product is not existed");
@@ -200,11 +196,8 @@ public class gui {
 	public boolean find(int k) {
 		for(int i=0;i<editor.productls.size();i++) {
 			if(productName.getText().equals(editor.productls.get(i).getName())) {
-				if(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText())<0) {
-					warning.setText("Given amount is bigger than the storage amount");
-				}else
-				if(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText())>0) {
-					editor.productls.get(i).setAmount(editor.productls.get(i).getAmount()+k*Integer.parseInt(productAmount.getText()));
+				if( (editor.productls.get(i).getAmount()+k) >0) {
+					editor.productls.get(i).setAmount(editor.productls.get(i).getAmount()+k);
 				}else
 					remove(i);
 				return true;
