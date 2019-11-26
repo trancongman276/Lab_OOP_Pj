@@ -122,7 +122,7 @@ public class gui {
 				for(int i=0;i<editor.productls.size();i++) {
 					if(productNameBox.getText().equals(editor.productls.get(i).getName())) {
 						amountOut.setText(Integer.toString(editor.productls.get(i).getAmount()));
-						decriptionOut.setText(editor.decription.get(i));
+						decriptionOut.setText(editor.productls.get(i).getDecription());
 						break;
 					}
 				}
@@ -205,13 +205,14 @@ public class gui {
 	public void remove(int i) {
 		editor.productls.remove(i);
 //		editor.amount.remove(i);
-		editor.decription.remove(i);
+//		editor.decription.remove(i);
 	}
 	
 	public void add() {
 		editor.productls.add(new Products(productName.getText(),Integer.parseInt(productAmount.getText())));
 //		editor.amount.add(Integer.parseInt(productAmount.getText()));
-		editor.decription.add(decription.getText());
+//		editor.decription.add(decription.getText());
+		editor.productls.get(editor.productls.size()-1).setDecription(decription.getText());
 	}
 
 	public JTextPane getProductList() {

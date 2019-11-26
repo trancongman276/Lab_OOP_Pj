@@ -7,6 +7,7 @@ public class Products implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private int amount;
+	private String decription;
 	
 	public Products(String Name, int Amount) {
 		name = Name;
@@ -28,6 +29,15 @@ public class Products implements Serializable{
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
+	public String getDecription() {
+		return decription;
+	}
+
+	public void setDecription(String decription) {
+		this.decription = decription;
+	}
+
 	@Override
 	public String toString() {
 		return name+" "+amount;

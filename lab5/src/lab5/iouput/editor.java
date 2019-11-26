@@ -87,9 +87,9 @@ public class editor {
 		File file = new File(Path);
 		FileOutputStream f = new FileOutputStream(Path);
 		ObjectOutputStream o = new ObjectOutputStream(f);
-//		for(int i=0;i<editor.productls.size();i++) {
-			o.writeObject(productls.get(0));
-//		}
+		for(int i=0;i<editor.productls.size();i++) {
+			o.writeObject(productls.get(i));
+		}
 		o.close();
 		f.close();
 	}
