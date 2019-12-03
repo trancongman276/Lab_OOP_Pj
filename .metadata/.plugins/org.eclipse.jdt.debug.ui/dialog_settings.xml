@@ -4,7 +4,7 @@
 	</section>
 	<section name="org.eclipse.jdt.debug.ui.MAIN_METHOD_SELECTION_DIALOG">
 		<item key="ShowStatusLine" value="true"/>
-		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab4/src&amp;lt;lab4.Main{TestApp.java[TestApp&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab5/src&amp;lt;lab5.Main{Laucher.java[Laucher&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab4/src&amp;lt;lab4.Main{TestApp.java[TestApp&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab5/src&amp;lt;lab5.Main{Laucher.java[Laucher&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab6/src&amp;lt;lab6.II{Mainfc.java[Mainfc&lt;/infoNode&gt;&#x0D;&#x0A;&lt;infoNode&gt;=lab6/src&amp;lt;lab6{Mainfc.java[Mainfc&lt;/infoNode&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
 		<section name="DialogBoundsSettings">
 			<item key="DIALOG_HEIGHT" value="500"/>
 			<item key="DIALOG_WIDTH" value="600"/>

@@ -19,7 +19,7 @@ public class Laucher {
 		
 		gui GUI = new gui();
 		
-		JFrame jframe = new JFrame("Test");
+		JFrame jframe = new JFrame("WAREHOUSE MANAGEMENT");
 		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 		GUI.addRemove(jframe.getContentPane());
